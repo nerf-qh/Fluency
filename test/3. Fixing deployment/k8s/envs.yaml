@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: fluency_engine_api-secrets
+type: Opaque
+data:
+  PASSWORD: AABBCC

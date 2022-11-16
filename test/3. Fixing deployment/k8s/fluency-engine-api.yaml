@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluency_engine_api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fluency_engine_api
+  template:
+    metadata:
+      labels:
+        app: fluency_engine_api
+        traefik.enable: "true"
+    spec:
+      containers:
+        - name: fluency_engine_api
+          image: fluency-engine
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+          envFrom:
+            - secretRef:
+                name: fluency_engine_api-secrets
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: fluency_engine_api-service
+spec:
+  selector:
+    app: fluency_engine_api
+  type: NodePort
+  ports:
+    - name: fluency_engine_api-port
+      port: 3000
+      targetPort: 3000
