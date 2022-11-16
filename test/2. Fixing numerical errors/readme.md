@@ -15,7 +15,9 @@ console.log(x);
 That's a tipical problem almost for every lang
 Moslty knows as `0.1 + 0.2` = `0.30000000000000004` and != `0.3`
 There is even sites for that
+
 https://0.30000000000000004.com/
+
 https://floating-point-gui.de/
 
 JS doesn't have special number types everethyng is 64-bit Floating Point (double precision)
@@ -28,6 +30,11 @@ But solutions can be different:
 - One option is to switch to integer
 E.g. working with $ you can store values in cents, calculate everethyng as integers
 And only in representation add point
+
+```js
+10 * 20 = 200
+200 / 10000 => 0.02
+```
 
 - Extend JS number representation for such munbers
   e.g.
